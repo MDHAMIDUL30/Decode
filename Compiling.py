@@ -66,7 +66,7 @@ def display_banner():
     """Display colorful banner using rainbow effect ONLY for ASCII art."""
     banner = f"""
 ██╗   ██╗ █████╗ ███████╗ ██████╗ ██████╗ 
-██║   ██║██╔══██╗██╔════╝██╔════╝██╔═══██╗
+██║   ██║██╔══██╗██╔════╝██╔════╝██╔═██╗
 ██║   ██║███████║███████╗██║     ██║   ██║
 ╚██╗ ██╔╝██╔══██║╚════██║██║     ██║   ██║
  ╚████╔╝ ██║  ██║███████║╚██████╗╚██████╔╝
@@ -124,8 +124,9 @@ def display_warning(message):
 # --- File/Input/Output Functions ---
 
 def get_file_input_with_selector():
-    """Get file input from user with file selector"""
-    py_files = [f for f in os.listdir('.') if os.path.isfile(f) and f.endswith(('.py', '.pyc', '.txt', '.dat'))] 
+    """Get file input from user with file selector (Now shows ALL files)."""
+    # MODIFICATION: Changed filter to show ALL files (excluding directories)
+    py_files = [f for f in os.listdir('.') if os.path.isfile(f)] 
     
     if not py_files:
         display_warning(f"No processable files found in the current directory ({os.getcwd()}).")
@@ -445,4 +446,4 @@ def auto_decode(data, depth=0, max_depth=20):
             if name == "Gzip" and not data_bytes.startswith(b'\x1f\x8b'): should_try = False
             elif name == "Zlib" and not (data_bytes.startswith(b'\x78') and len(data_bytes) > 2): should_try = False
             elif name == "BZ2" and not data_bytes.startswith(b'BZh'): should_try = False
-            elif name == "LZMA" and not (data_bytes.startswith(b'\xfd7zXZ') or data_bytes.startsw
+            elif name == "LZMA" and not (data_b
