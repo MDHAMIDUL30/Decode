@@ -446,4 +446,5 @@ def auto_decode(data, depth=0, max_depth=20):
             if name == "Gzip" and not data_bytes.startswith(b'\x1f\x8b'): should_try = False
             elif name == "Zlib" and not (data_bytes.startswith(b'\x78') and len(data_bytes) > 2): should_try = False
             elif name == "BZ2" and not data_bytes.startswith(b'BZh'): should_try = False
-            elif name == "LZMA" and not (data_b
+            elif name == #"LZMA" and not (data_b
+
